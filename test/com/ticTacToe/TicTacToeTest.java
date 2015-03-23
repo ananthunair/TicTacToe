@@ -39,4 +39,20 @@ public class TicTacToeTest {
         ticTacToe.addMarker(7);
         assertFalse(ticTacToe.winning());
     }
+    @Test
+    public void testWinningReturnsTrueIfPlayerAddsMarkerOnSameDiagonalCell(){
+        TicTacToe ticTacToe = new TicTacToe();
+        ticTacToe.addMarker(1);
+        ticTacToe.addMarker(5);
+        ticTacToe.addMarker(9);
+        assertTrue(ticTacToe.winning());
+    }
+    @Test
+    public void testWinningReturnsTrueIfPlayerAddsMarkerOnTheOppositeDiagonalCell(){
+        TicTacToe ticTacToe = new TicTacToe();
+        ticTacToe.addMarker(3);
+        ticTacToe.addMarker(5);
+        ticTacToe.addMarker(7);
+        assertTrue(ticTacToe.winning());
+    }
 }

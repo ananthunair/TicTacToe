@@ -51,6 +51,13 @@ public class TicTacToe {
                 if (j == 2) return true;
             }
         }
+        // diagonal
+        current = board[0][0];
+        if(!Character.isDigit(current) && current == board[1][1] && current == board[2][2])
+            return true;
+        current = board[0][2];
+        if(!Character.isDigit(current) && current == board[1][1] && current == board[2][0])
+            return true;
         return false;
     }
 }
