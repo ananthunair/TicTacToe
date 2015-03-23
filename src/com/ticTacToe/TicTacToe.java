@@ -4,16 +4,6 @@ public class TicTacToe {
     private char[][] board;
 
     public TicTacToe() {
-        this.board = new char[3][3];
-        board[0][0] = 1;
-        board[0][1] = 2;
-        board[0][2] = 3;
-        board[1][0] = 4;
-        board[1][1] = 5;
-        board[1][2] = 6;
-        board[2][0] = 7;
-        board[2][1] = 8;
-        board[2][2] = 9;
     }
 
     public void addMarker(int position) {
@@ -59,5 +49,19 @@ public class TicTacToe {
         if(!Character.isDigit(current) && current == board[1][1] && current == board[2][0])
             return true;
         return false;
+    }
+
+    public void createBoard() {
+        this.board = new char[3][3];
+        board[0][0] = 1;
+        board[0][1] = 2;
+        board[0][2] = 3;
+        board[1][0] = 4;
+        board[1][1] = 5;
+        board[1][2] = 6;
+        board[2][0] = 7;
+        board[2][1] = 8;
+        board[2][2] = 9;
+
     }
 }
