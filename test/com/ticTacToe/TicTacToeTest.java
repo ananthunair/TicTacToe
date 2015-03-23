@@ -17,55 +17,55 @@ public class TicTacToeTest {
 
     @Test
     public void testCreateBoardInitialisesTheGameBoard() {
-        assertEquals(1, ticTacToe.getBoard()[0][0]);
-        assertEquals(2, ticTacToe.getBoard()[0][1]);
-        assertEquals(3, ticTacToe.getBoard()[0][2]);
-        assertEquals(4, ticTacToe.getBoard()[1][0]);
+        assertEquals('1', ticTacToe.getBoard()[0][0]);
+        assertEquals('2', ticTacToe.getBoard()[0][1]);
+        assertEquals('3', ticTacToe.getBoard()[0][2]);
+        assertEquals('4', ticTacToe.getBoard()[1][0]);
     }
 
     @Test
     public void testAddMarkerAddsTheMarkOnTheBoard(){
-        ticTacToe.addMarker(1);
+        ticTacToe.addMarker('1');
         assertEquals('x', ticTacToe.getBoard()[0][0]);
     }
 
     @Test
     public void testWinningReturnsTrueIfPlayerAddsMarkerOnSameRow(){
-        ticTacToe.addMarker(1);
-        ticTacToe.addMarker(2);
-        ticTacToe.addMarker(3);
+        ticTacToe.addMarker('1');
+        ticTacToe.addMarker('2');
+        ticTacToe.addMarker('3');
         assertTrue(ticTacToe.winning());
     }
 
     @Test
     public void testWinningReturnsTrueIfPlayerAddsMarkerOnSameColumn(){
-        ticTacToe.addMarker(1);
-        ticTacToe.addMarker(4);
-        ticTacToe.addMarker(7);
+        ticTacToe.addMarker('1');
+        ticTacToe.addMarker('4');
+        ticTacToe.addMarker('7');
         assertTrue(ticTacToe.winning());
     }
 
     @Test
     public void testWinningReturnsFalseIfPlayerAddsMarkerOnDifferentColumn(){
-        ticTacToe.addMarker(2);
-        ticTacToe.addMarker(4);
-        ticTacToe.addMarker(7);
+        ticTacToe.addMarker('2');
+        ticTacToe.addMarker('4');
+        ticTacToe.addMarker('7');
         assertFalse(ticTacToe.winning());
     }
 
     @Test
     public void testWinningReturnsTrueIfPlayerAddsMarkerOnSameDiagonalCell(){
-        ticTacToe.addMarker(1);
-        ticTacToe.addMarker(5);
-        ticTacToe.addMarker(9);
+        ticTacToe.addMarker('1');
+        ticTacToe.addMarker('5');
+        ticTacToe.addMarker('9');
         assertTrue(ticTacToe.winning());
     }
 
     @Test
     public void testWinningReturnsTrueIfPlayerAddsMarkerOnTheOppositeDiagonalCell(){
-        ticTacToe.addMarker(3);
-        ticTacToe.addMarker(5);
-        ticTacToe.addMarker(7);
+        ticTacToe.addMarker('3');
+        ticTacToe.addMarker('5');
+        ticTacToe.addMarker('7');
         assertTrue(ticTacToe.winning());
     }
 }

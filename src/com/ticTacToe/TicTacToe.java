@@ -6,7 +6,7 @@ public class TicTacToe {
     public TicTacToe() {
     }
 
-    public void addMarker(int position) {
+    public void addMarker(char position) {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 if (board[i][j] == position)
@@ -16,12 +16,12 @@ public class TicTacToe {
     }
 
     public char[][] getBoard() {
+
         return this.board;
     }
 
     public boolean winning() {
         char current = ' ';
-        //row
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 if (Character.isDigit(board[i][j])) break;
@@ -31,37 +31,31 @@ public class TicTacToe {
                 if (j == 2) return true;
             }
         }
-        //column
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if (Character.isDigit(board[i][j])) break;
+                if (Character.isDigit(board[j][i])) break;
                 if (j == 0)
-                    current = board[i][j];
+                    current = board[j][i];
                 else if (current != board[j][i]) break;
                 if (j == 2) return true;
             }
         }
-        // diagonal
         current = board[0][0];
-        if(!Character.isDigit(current) && current == board[1][1] && current == board[2][2])
+        if(Character.isLetter(current) && current == board[1][1] && current == board[2][2])
             return true;
         current = board[0][2];
-        if(!Character.isDigit(current) && current == board[1][1] && current == board[2][0])
+        if(Character.isLetter(current) && current == board[1][1] && current == board[2][0])
             return true;
         return false;
     }
 
     public void createBoard() {
         this.board = new char[3][3];
-        board[0][0] = 1;
-        board[0][1] = 2;
-        board[0][2] = 3;
-        board[1][0] = 4;
-        board[1][1] = 5;
-        board[1][2] = 6;
-        board[2][0] = 7;
-        board[2][1] = 8;
-        board[2][2] = 9;
-
+        int number = 0;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                board[i][j] = Character.forDigit(++number, 10);
+            }
+        }
     }
 }
