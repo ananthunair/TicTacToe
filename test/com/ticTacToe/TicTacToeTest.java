@@ -68,4 +68,14 @@ public class TicTacToeTest {
         ticTacToe.addMarker('7');
         assertTrue(ticTacToe.winning());
     }
+
+    @Test
+    public void testInitCreatesTheBoardAndSetsTheCurrentPlayerToPlayer1(){
+        ticTacToe.init();
+        assertEquals(1,ticTacToe.getCurrentPlayer(),0.001);
+    }
+//    @Test
+//    public void testSwitchPlayersSwitchesTheCurrentPlayer(){
+//
+//    }
 }

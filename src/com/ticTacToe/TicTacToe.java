@@ -2,6 +2,7 @@ package com.ticTacToe;
 
 public class TicTacToe {
     private char[][] board;
+    private int currentPlayer;
 
     public TicTacToe() {
     }
@@ -57,5 +58,14 @@ public class TicTacToe {
                 board[i][j] = Character.forDigit(++number, 10);
             }
         }
+    }
+
+    public void init() {
+        this.createBoard();
+        this.currentPlayer = 1;
+    }
+
+    public int getCurrentPlayer() {
+        return currentPlayer;
     }
 }
