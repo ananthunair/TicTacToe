@@ -78,8 +78,16 @@ public class TicTacToeTest {
     public void testSwitchPlayersSwitchesTheCurrentPlayer(){
         ticTacToe.init();
         ticTacToe.switchPlayers();
-        assertEquals(2,ticTacToe.getCurrentPlayer());
+        assertEquals(2, ticTacToe.getCurrentPlayer());
         ticTacToe.switchPlayers();
-        assertEquals(1,ticTacToe.getCurrentPlayer());
+        assertEquals(1, ticTacToe.getCurrentPlayer());
+    }
+    @Test
+    public void testDrawBoardDraws3By3Board(){
+        String expected = "Game board:"+System.lineSeparator()
+                +" [1] [2] [3]"+System.lineSeparator()
+                +" [4] [5] [6]"+System.lineSeparator()
+                +" [7] [8] [9]"+System.lineSeparator();
+        assertEquals(expected,ticTacToe.drawBoard());
     }
 }

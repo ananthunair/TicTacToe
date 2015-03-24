@@ -11,7 +11,7 @@ public class TicTacToe {
         this.player2 = 2;
     }
 
-    public void addMarker(char position) {
+    protected void addMarker(char position) {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 if (board[i][j] == position)
@@ -21,7 +21,6 @@ public class TicTacToe {
     }
 
     public char[][] getBoard() {
-
         return this.board;
     }
 
@@ -78,5 +77,16 @@ public class TicTacToe {
             currentPlayer = 2;
         else
             currentPlayer = 1;
+    }
+
+    protected String drawBoard() {
+        StringBuilder builder = new StringBuilder("Game board:"+System.lineSeparator());
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                builder.append(" [" + board[i][j] + "]");
+            }
+            builder.append(System.lineSeparator());
+        }
+        return builder.toString();
     }
 }
