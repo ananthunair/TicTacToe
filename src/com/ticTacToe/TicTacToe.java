@@ -1,10 +1,14 @@
 package com.ticTacToe;
 
 public class TicTacToe {
+    private final int player1;
+    private final int player2;
     private char[][] board;
     private int currentPlayer;
 
     public TicTacToe() {
+        this.player1 = 1;
+        this.player2 = 2;
     }
 
     public void addMarker(char position) {
@@ -67,5 +71,12 @@ public class TicTacToe {
 
     public int getCurrentPlayer() {
         return currentPlayer;
+    }
+
+    public void switchPlayers() {
+        if(currentPlayer == 1)
+            currentPlayer = 2;
+        else
+            currentPlayer = 1;
     }
 }

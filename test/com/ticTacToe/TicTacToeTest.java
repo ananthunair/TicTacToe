@@ -74,8 +74,12 @@ public class TicTacToeTest {
         ticTacToe.init();
         assertEquals(1,ticTacToe.getCurrentPlayer(),0.001);
     }
-//    @Test
-//    public void testSwitchPlayersSwitchesTheCurrentPlayer(){
-//
-//    }
+    @Test
+    public void testSwitchPlayersSwitchesTheCurrentPlayer(){
+        ticTacToe.init();
+        ticTacToe.switchPlayers();
+        assertEquals(2,ticTacToe.getCurrentPlayer());
+        ticTacToe.switchPlayers();
+        assertEquals(1,ticTacToe.getCurrentPlayer());
+    }
 }
