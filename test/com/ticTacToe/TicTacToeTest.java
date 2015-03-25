@@ -13,6 +13,7 @@ public class TicTacToeTest {
     public void setUp() throws Exception {
         ticTacToe = new TicTacToe();
         ticTacToe.createBoard();
+        ticTacToe.init();
     }
 
     @Test
@@ -71,17 +72,17 @@ public class TicTacToeTest {
 
     @Test
     public void testInitCreatesTheBoardAndSetsTheCurrentPlayerToPlayer1(){
-        ticTacToe.init();
         assertEquals(1,ticTacToe.getCurrentPlayer(),0.001);
     }
+
     @Test
     public void testSwitchPlayersSwitchesTheCurrentPlayer(){
-        ticTacToe.init();
         ticTacToe.switchPlayers();
         assertEquals(2, ticTacToe.getCurrentPlayer());
         ticTacToe.switchPlayers();
         assertEquals(1, ticTacToe.getCurrentPlayer());
     }
+
     @Test
     public void testDrawBoardDraws3By3Board(){
         String expected = "Game board:"+System.lineSeparator()
