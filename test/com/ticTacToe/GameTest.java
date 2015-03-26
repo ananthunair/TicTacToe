@@ -18,41 +18,41 @@ public class GameTest {
 
     @Test
     public void testWinningReturnsTrueIfPlayerAddsMarkerOnSameRow(){
-        board.addMarker('1', 1);
-        board.addMarker('2', 1);
-        board.addMarker('3', 1);
+        board.addMarker(1, 1);
+        board.addMarker(2, 1);
+        board.addMarker(3, 1);
         assertTrue(game.winning());
     }
 
     @Test
     public void testWinningReturnsTrueIfPlayerAddsMarkerOnSameColumn(){
-        board.addMarker('1', 1);
-        board.addMarker('4', 1);
-        board.addMarker('7', 1);
+        board.addMarker(1, 1);
+        board.addMarker(4, 1);
+        board.addMarker(7, 1);
         assertTrue(game.winning());
     }
 
     @Test
     public void testWinningReturnsFalseIfPlayerAddsMarkerOnDifferentColumn(){
-        board.addMarker('2', 1);
-        board.addMarker('4', 1);
-        board.addMarker('7', 1);
+        board.addMarker(2, 1);
+        board.addMarker(4, 1);
+        board.addMarker(7, 1);
         assertFalse(game.winning());
     }
 
     @Test
     public void testWinningReturnsTrueIfPlayerAddsMarkerOnSameDiagonalCell(){
-        board.addMarker('1', 1);
-        board.addMarker('5', 1);
-        board.addMarker('9', 1);
+        board.addMarker(1, 1);
+        board.addMarker(5, 1);
+        board.addMarker(9, 1);
         assertTrue(game.winning());
     }
 
     @Test
     public void testWinningReturnsTrueIfPlayerAddsMarkerOnTheOppositeDiagonalCell(){
-        board.addMarker('3', 1);
-        board.addMarker('5', 1);
-        board.addMarker('7', 1);
+        board.addMarker(3, 1);
+        board.addMarker(5, 1);
+        board.addMarker(7, 1);
         assertTrue(game.winning());
     }
 

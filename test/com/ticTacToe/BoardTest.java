@@ -32,7 +32,7 @@ public class BoardTest {
 
     @Test
     public void testAddMarkerAddsTheMarkOnTheBoard(){
-        board.addMarker('1',1);
+        assertTrue(board.addMarker(1,1));
         assertEquals('x', board.getBoard()[0][0]);
     }
 }

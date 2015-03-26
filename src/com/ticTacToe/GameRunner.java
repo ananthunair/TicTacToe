@@ -1,7 +1,5 @@
 package com.ticTacToe;
 
-import com.sun.org.apache.xpath.internal.SourceTree;
-
 import java.util.Scanner;
 
 public class GameRunner {
@@ -14,8 +12,8 @@ public class GameRunner {
         while(!game.winning() && game.getPlays()<9){
             System.out.println(board.drawBoard());
             System.out.println("Enter Your Choice: ");
-            char input = scanner.next().charAt(0);
-            board.addMarker(input, game.getCurrentPlayer());
+            String input = scanner.next();
+//            board.addMarker(input, game.getCurrentPlayer());
             if(!game.winning())
                 game.switchPlayers();
         }
@@ -24,5 +22,11 @@ public class GameRunner {
             System.out.println("Game Draw.");
         else
             System.out.println("Player "+game.getCurrentPlayer()+" Wins.");
+    }
+
+    public boolean isValidPick(String pick) {
+        if (pick.length() == 1 && Character.isDigit(pick.toCharArray()[0]))
+            return true;
+        return false;
     }
 }

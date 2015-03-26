@@ -32,12 +32,15 @@ public class Board {
         return builder.toString();
     }
 
-    protected void addMarker(char position,int currentPlayer) {
+    protected boolean addMarker(int position, int currentPlayer) {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if (board[i][j] == position)
+                if (board[i][j] == Character.forDigit(position,10)) {
                     board[i][j] = (currentPlayer == 1) ? 'x' : 'o';
+                    return true;
+                }
             }
         }
+        return false;
     }
 }
