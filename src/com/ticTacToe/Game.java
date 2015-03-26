@@ -35,9 +35,7 @@ public class Game {
         if(Character.isLetter(current) && current == board.getBoard()[1][1] && current == board.getBoard()[2][2])
             return true;
         current = board.getBoard()[0][2];
-        if(Character.isLetter(current) && current == board.getBoard()[1][1] && current == board.getBoard()[2][0])
-            return true;
-        return false;
+        return Character.isLetter(current) && current == board.getBoard()[1][1] && current == board.getBoard()[2][0];
     }
 
     public void init() {
