@@ -49,8 +49,13 @@ public class GameRunner {
         int input = 0;
         while(!isValid){
             System.out.println("Enter Your Choice: ");
-            input = scanner.nextInt();
-            isValid = isValidPick(input);
+            try {
+                input = scanner.nextInt();
+                isValid = isValidPick(input);
+            }catch (Exception e){
+                isValid = false;
+                scanner.next();
+            }
             if(!isValid)
                 System.out.println("Invalid Pick!");
         }
