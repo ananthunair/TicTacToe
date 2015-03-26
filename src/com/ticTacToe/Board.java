@@ -2,7 +2,6 @@ package com.ticTacToe;
 
 public class Board {
     public char[][] board;
-
     public Board() {
         this.board = new char[3][3];
         createBoard();
@@ -23,20 +22,19 @@ public class Board {
 
     public String drawBoard() {
         StringBuilder builder = new StringBuilder("Game board:" + System.lineSeparator());
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                builder.append(" [" + board[i][j] + "]");
-            }
+        for (int row = 0; row < 3; row++) {
+            for (int col = 0; col < 3; col++)
+                builder.append(" [" + board[row][col] + "]");
             builder.append(System.lineSeparator());
             }
         return builder.toString();
     }
 
     protected boolean addMarker(int position, int currentPlayer) {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (board[i][j] == Character.forDigit(position,10)) {
-                    board[i][j] = (currentPlayer == 1) ? 'x' : 'o';
+        for (int row = 0; row < 3; row++) {
+            for (int col = 0; col < 3; col++) {
+                if (board[row][col] == Character.forDigit(position,10)) {
+                    board[row][col] = (currentPlayer == 1) ? 'x' : 'o';
                     return true;
                 }
             }
@@ -45,9 +43,9 @@ public class Board {
     }
 
     public boolean isSelected(int position) {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++)
-                if (board[i][j] == Character.forDigit(position,10))
+        for (int row = 0; row < 3; row++) {
+            for (int col = 0; col < 3; col++)
+                if (board[row][col] == Character.forDigit(position,10))
                     return false;
         }
         return true;

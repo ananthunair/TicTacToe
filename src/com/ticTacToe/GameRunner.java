@@ -53,13 +53,16 @@ public class GameRunner {
                 input = scanner.nextInt();
                 isValid = isValidPick(input);
             }catch (Exception e){
-                isValid = false;
                 scanner.next();
             }
-            if(!isValid)
-                System.out.println("Invalid Pick!");
+            declareInvalidPick(isValid);
         }
         return input;
+    }
+
+    private void declareInvalidPick(boolean isValid) {
+        if(!isValid)
+            System.out.println("Invalid Pick!");
     }
 
     public boolean isValidPick(int pick) {

@@ -20,7 +20,7 @@ public class Game {
             for (int col = 0; col < 3; col++) {
                 if (isDigit(row, col)) break;
                 if (col == 0)
-                    current = getBoardAt(row, col);
+                    current = board.getBoard()[row][col];
                 else if (isCurrentUnavailable(current, row, col)) break;
                 if (col == 2) return true;
             }
@@ -29,7 +29,7 @@ public class Game {
             for (int col = 0; col < 3; col++) {
                 if (isDigit(col, row)) break;
                 if (col == 0)
-                    current = getBoardAt(col, row);
+                    current = board.getBoard()[col][row];
                 else if (isCurrentUnavailable(current, col, row)) break;
                 if (col == 2) return true;
             }
@@ -37,25 +37,21 @@ public class Game {
         return checkDiagonalsWinningCondition();
     }
 
-    private char getBoardAt(int row, int col) {
-        return board.getBoard()[row][col];
-    }
-
     private boolean isCurrentUnavailable(char current, int row, int col) {
-        return current != getBoardAt(row, col);
+        return current != board.getBoard()[row][col];
     }
 
     private boolean isDigit(int row, int col) {
-        return Character.isDigit(getBoardAt(row, col));
+        return Character.isDigit(board.getBoard()[row][col]);
     }
 
     private boolean checkDiagonalsWinningCondition() {
         char current;
-        current = getBoardAt(0, 0);
-        if(Character.isLetter(current) && current == getBoardAt(1, 1) && current == getBoardAt(2, 2))
+        current = board.getBoard()[0][0];
+        if(Character.isLetter(current) && current == board.getBoard()[1][1] && current == board.getBoard()[2][2])
             return true;
-        current = getBoardAt(0, 2);
-        return Character.isLetter(current) && current == getBoardAt(1, 1) && current == getBoardAt(2, 0);
+        current = board.getBoard()[0][2];
+        return Character.isLetter(current) && current == board.getBoard()[1][1] && current == board.getBoard()[2][0];
     }
 
     public int getCurrentPlayer() {
