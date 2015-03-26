@@ -13,21 +13,23 @@ public class GameRunnerTest {
     public void setUp() throws Exception {
         board = new Board();
         this.gameRunner = new GameRunner(board);
-
     }
 
     @Test
     public void testIsValidPickReturnsTrueIfNumberIsGiven(){
         assertTrue(gameRunner.isValidPick(1));
     }
+
     @Test
     public void testIsValidPickReturnsFalseIfNumberIs10(){
         assertFalse(gameRunner.isValidPick(10));
     }
+
     @Test
     public void testIsValidPickReturnsFalseIfNumberIs0(){
         assertFalse(gameRunner.isValidPick(0));
     }
+
     @Test
     public void testIsValidPickReturnsFalseIfNumberIsAlreadySelected(){
         board.addMarker(1,1);

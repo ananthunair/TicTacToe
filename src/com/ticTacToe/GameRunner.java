@@ -13,7 +13,7 @@ public class GameRunner {
 
     public void startGame() {
         game.init();
-        Scanner scanner = new Scanner(System.in );
+        Scanner scanner = new Scanner(System.in);
         gamePlay(scanner);
         displayResult();
     }
@@ -21,9 +21,9 @@ public class GameRunner {
     private void displayResult() {
         System.out.println(board.drawBoard());
         if(game.getPlays() == 9)
-            System.out.println("Game Draw.");
+            System.out.println("Game Over - Draw.");
         else
-            System.out.println("Player "+game.getCurrentPlayer()+" Wins.");
+            System.out.println("Game Over - Player "+game.getCurrentPlayer()+" Wins.");
     }
 
     private void gamePlay(Scanner scanner) {

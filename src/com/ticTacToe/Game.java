@@ -12,7 +12,6 @@ public class Game {
 
     public boolean winning() {
         char current = ' ';
-
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 if (Character.isDigit(board.getBoard()[i][j])) break;
@@ -31,6 +30,11 @@ public class Game {
                 if (j == 2) return true;
             }
         }
+        return checkDiagonalsWinningCondition();
+    }
+
+    private boolean checkDiagonalsWinningCondition() {
+        char current;
         current = board.getBoard()[0][0];
         if(Character.isLetter(current) && current == board.getBoard()[1][1] && current == board.getBoard()[2][2])
             return true;
