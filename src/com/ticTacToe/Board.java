@@ -28,7 +28,7 @@ public class Board {
                 builder.append(" [" + board[i][j] + "]");
             }
             builder.append(System.lineSeparator());
-        }
+            }
         return builder.toString();
     }
 
@@ -42,5 +42,14 @@ public class Board {
             }
         }
         return false;
+    }
+
+    public boolean isSelected(int position) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++)
+                if (board[i][j] == Character.forDigit(position,10))
+                    return false;
+        }
+        return true;
     }
 }

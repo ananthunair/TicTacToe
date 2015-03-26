@@ -1,21 +1,36 @@
 package com.ticTacToe;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class GameRunnerTest {
-    @Test
-    public void testIsValidPickReturnsFalseIfCharacterIsGiven(){
-        assertFalse(new GameRunner().isValidPick("x"));
+    GameRunner gameRunner;
+    Board board;
+
+    @Before
+    public void setUp() throws Exception {
+        board = new Board();
+        this.gameRunner = new GameRunner(board);
+
     }
+
     @Test
     public void testIsValidPickReturnsTrueIfNumberIsGiven(){
-        assertTrue(new GameRunner().isValidPick("1"));
+        assertTrue(gameRunner.isValidPick(1));
     }
     @Test
     public void testIsValidPickReturnsFalseIfNumberIs10(){
-        assertFalse(new GameRunner().isValidPick("10"));
+        assertFalse(gameRunner.isValidPick(10));
     }
-
+    @Test
+    public void testIsValidPickReturnsFalseIfNumberIs0(){
+        assertFalse(gameRunner.isValidPick(0));
+    }
+    @Test
+    public void testIsValidPickReturnsFalseIfNumberIsAlreadySelected(){
+        board.addMarker(1,1);
+        assertFalse(gameRunner.isValidPick(1));
+    }
 }

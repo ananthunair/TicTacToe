@@ -1,16 +1,12 @@
 package com.ticTacToe;
 
 public class Game {
-    private final int player1;
-    private final int player2;
     private Board board;
 
     private int currentPlayer;
     private int plays;
 
     public Game(Board board) {
-        this.player1 = 1;
-        this.player2 = 2;
         this.board = board;
     }
 
