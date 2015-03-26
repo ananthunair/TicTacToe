@@ -6,14 +6,14 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class TicTacToeTest {
-    TicTacToe ticTacToe;
+public class GameTest {
+    Game game;
     Board board ;
     @Before
     public void setUp() throws Exception {
         this.board = new Board();
-        this.ticTacToe = new TicTacToe(board);
-        ticTacToe.init();
+        this.game = new Game(board);
+        game.init();
     }
 
     @Test
@@ -21,7 +21,7 @@ public class TicTacToeTest {
         board.addMarker('1', 1);
         board.addMarker('2', 1);
         board.addMarker('3', 1);
-        assertTrue(ticTacToe.winning());
+        assertTrue(game.winning());
     }
 
     @Test
@@ -29,7 +29,7 @@ public class TicTacToeTest {
         board.addMarker('1', 1);
         board.addMarker('4', 1);
         board.addMarker('7', 1);
-        assertTrue(ticTacToe.winning());
+        assertTrue(game.winning());
     }
 
     @Test
@@ -37,7 +37,7 @@ public class TicTacToeTest {
         board.addMarker('2', 1);
         board.addMarker('4', 1);
         board.addMarker('7', 1);
-        assertFalse(ticTacToe.winning());
+        assertFalse(game.winning());
     }
 
     @Test
@@ -45,7 +45,7 @@ public class TicTacToeTest {
         board.addMarker('1', 1);
         board.addMarker('5', 1);
         board.addMarker('9', 1);
-        assertTrue(ticTacToe.winning());
+        assertTrue(game.winning());
     }
 
     @Test
@@ -53,19 +53,19 @@ public class TicTacToeTest {
         board.addMarker('3', 1);
         board.addMarker('5', 1);
         board.addMarker('7', 1);
-        assertTrue(ticTacToe.winning());
+        assertTrue(game.winning());
     }
 
     @Test
     public void testInitCreatesTheBoardAndSetsTheCurrentPlayerToPlayer1(){
-        assertEquals(1,ticTacToe.getCurrentPlayer(),0.001);
+        assertEquals(1, game.getCurrentPlayer(),0.001);
     }
 
     @Test
     public void testSwitchPlayersSwitchesTheCurrentPlayer(){
-        ticTacToe.switchPlayers();
-        assertEquals(2, ticTacToe.getCurrentPlayer());
-        ticTacToe.switchPlayers();
-        assertEquals(1, ticTacToe.getCurrentPlayer());
+        game.switchPlayers();
+        assertEquals(2, game.getCurrentPlayer());
+        game.switchPlayers();
+        assertEquals(1, game.getCurrentPlayer());
     }
 }
