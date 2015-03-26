@@ -8,65 +8,51 @@ import static org.junit.Assert.assertTrue;
 
 public class TicTacToeTest {
     TicTacToe ticTacToe;
-
+    Board board ;
     @Before
     public void setUp() throws Exception {
-        ticTacToe = new TicTacToe();
-        ticTacToe.createBoard();
+        this.board = new Board();
+        this.ticTacToe = new TicTacToe(board);
         ticTacToe.init();
     }
 
     @Test
-    public void testCreateBoardInitialisesTheGameBoard() {
-        assertEquals('1', ticTacToe.getBoard()[0][0]);
-        assertEquals('2', ticTacToe.getBoard()[0][1]);
-        assertEquals('3', ticTacToe.getBoard()[0][2]);
-        assertEquals('4', ticTacToe.getBoard()[1][0]);
-    }
-
-    @Test
-    public void testAddMarkerAddsTheMarkOnTheBoard(){
-        ticTacToe.addMarker('1');
-        assertEquals('x', ticTacToe.getBoard()[0][0]);
-    }
-
-    @Test
     public void testWinningReturnsTrueIfPlayerAddsMarkerOnSameRow(){
-        ticTacToe.addMarker('1');
-        ticTacToe.addMarker('2');
-        ticTacToe.addMarker('3');
+        board.addMarker('1', 1);
+        board.addMarker('2', 1);
+        board.addMarker('3', 1);
         assertTrue(ticTacToe.winning());
     }
 
     @Test
     public void testWinningReturnsTrueIfPlayerAddsMarkerOnSameColumn(){
-        ticTacToe.addMarker('1');
-        ticTacToe.addMarker('4');
-        ticTacToe.addMarker('7');
+        board.addMarker('1', 1);
+        board.addMarker('4', 1);
+        board.addMarker('7', 1);
         assertTrue(ticTacToe.winning());
     }
 
     @Test
     public void testWinningReturnsFalseIfPlayerAddsMarkerOnDifferentColumn(){
-        ticTacToe.addMarker('2');
-        ticTacToe.addMarker('4');
-        ticTacToe.addMarker('7');
+        board.addMarker('2', 1);
+        board.addMarker('4', 1);
+        board.addMarker('7', 1);
         assertFalse(ticTacToe.winning());
     }
 
     @Test
     public void testWinningReturnsTrueIfPlayerAddsMarkerOnSameDiagonalCell(){
-        ticTacToe.addMarker('1');
-        ticTacToe.addMarker('5');
-        ticTacToe.addMarker('9');
+        board.addMarker('1', 1);
+        board.addMarker('5', 1);
+        board.addMarker('9', 1);
         assertTrue(ticTacToe.winning());
     }
 
     @Test
     public void testWinningReturnsTrueIfPlayerAddsMarkerOnTheOppositeDiagonalCell(){
-        ticTacToe.addMarker('3');
-        ticTacToe.addMarker('5');
-        ticTacToe.addMarker('7');
+        board.addMarker('3', 1);
+        board.addMarker('5', 1);
+        board.addMarker('7', 1);
         assertTrue(ticTacToe.winning());
     }
 
@@ -81,14 +67,5 @@ public class TicTacToeTest {
         assertEquals(2, ticTacToe.getCurrentPlayer());
         ticTacToe.switchPlayers();
         assertEquals(1, ticTacToe.getCurrentPlayer());
-    }
-
-    @Test
-    public void testDrawBoardDraws3By3Board(){
-        String expected = "Game board:"+System.lineSeparator()
-                +" [1] [2] [3]"+System.lineSeparator()
-                +" [4] [5] [6]"+System.lineSeparator()
-                +" [7] [8] [9]"+System.lineSeparator();
-        assertEquals(expected,ticTacToe.drawBoard());
     }
 }

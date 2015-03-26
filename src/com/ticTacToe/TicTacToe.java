@@ -3,68 +3,47 @@ package com.ticTacToe;
 public class TicTacToe {
     private final int player1;
     private final int player2;
-    private char[][] board;
+    private Board board;
+
     private int currentPlayer;
 
-    public TicTacToe() {
+    public TicTacToe(Board board) {
         this.player1 = 1;
         this.player2 = 2;
-    }
-
-    protected void addMarker(char position) {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (board[i][j] == position)
-                    board[i][j] = (currentPlayer == 1) ? 'x' : 'o';
-            }
-        }
-    }
-
-    public char[][] getBoard() {
-        return this.board;
+        this.board = board;
     }
 
     public boolean winning() {
         char current = ' ';
+
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if (Character.isDigit(board[i][j])) break;
+                if (Character.isDigit(board.getBoard()[i][j])) break;
                 if (j == 0)
-                    current = board[i][j];
-                else if (current != board[i][j]) break;
+                    current = board.getBoard()[i][j];
+                else if (current != board.getBoard()[i][j]) break;
                 if (j == 2) return true;
             }
         }
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if (Character.isDigit(board[j][i])) break;
+                if (Character.isDigit(board.getBoard()[j][i])) break;
                 if (j == 0)
-                    current = board[j][i];
-                else if (current != board[j][i]) break;
+                    current = board.getBoard()[j][i];
+                else if (current != board.getBoard()[j][i]) break;
                 if (j == 2) return true;
             }
         }
-        current = board[0][0];
-        if(Character.isLetter(current) && current == board[1][1] && current == board[2][2])
+        current = board.getBoard()[0][0];
+        if(Character.isLetter(current) && current == board.getBoard()[1][1] && current == board.getBoard()[2][2])
             return true;
-        current = board[0][2];
-        if(Character.isLetter(current) && current == board[1][1] && current == board[2][0])
+        current = board.getBoard()[0][2];
+        if(Character.isLetter(current) && current == board.getBoard()[1][1] && current == board.getBoard()[2][0])
             return true;
         return false;
     }
 
-    public void createBoard() {
-        this.board = new char[3][3];
-        int number = 0;
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                board[i][j] = Character.forDigit(++number, 10);
-            }
-        }
-    }
-
     public void init() {
-        this.createBoard();
         this.currentPlayer = 1;
     }
 
@@ -79,14 +58,4 @@ public class TicTacToe {
             currentPlayer = 1;
     }
 
-    protected String drawBoard() {
-        StringBuilder builder = new StringBuilder("Game board:"+System.lineSeparator());
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                builder.append(" [" + board[i][j] + "]");
-            }
-            builder.append(System.lineSeparator());
-        }
-        return builder.toString();
-    }
 }
