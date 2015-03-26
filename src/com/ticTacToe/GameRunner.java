@@ -21,23 +21,31 @@ public class GameRunner {
     private void displayResult() {
         System.out.println(board.drawBoard());
         if(game.getPlays() == 9)
-            System.out.println("Game Over - Draw.");
+            declareGameDraw();
         else
-            System.out.println("Game Over - Player "+game.getCurrentPlayer()+" Wins.");
+            declareWinner();
+    }
+
+    private void declareGameDraw() {
+        System.out.println("Game Over - Draw.");
+    }
+
+    private void declareWinner() {
+        System.out.println("Game Over - Player "+game.getCurrentPlayer()+" Wins.");
     }
 
     private void gamePlay(Scanner scanner) {
         while(!game.winning() && game.getPlays()<9){
-            boolean isValid = false;
             System.out.println(board.drawBoard());
-            int input = getPick(scanner, isValid);
+            int input = getPick(scanner);
             board.addMarker(input, game.getCurrentPlayer());
             if(!game.winning())
                 game.switchPlayers();
         }
     }
 
-    private int getPick(Scanner scanner, boolean isValid) {
+    private int getPick(Scanner scanner) {
+        boolean isValid = false;
         int input = 0;
         while(!isValid){
             System.out.println("Enter Your Choice: ");
@@ -50,8 +58,6 @@ public class GameRunner {
     }
 
     public boolean isValidPick(int pick) {
-        if (1 <= pick && pick <=9 && !board.isSelected(pick))
-            return true;
-        return false;
+        return (pick >= 1 && pick <= 9 && !board.isSelected(pick));
     }
 }
