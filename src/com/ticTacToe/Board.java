@@ -23,7 +23,7 @@ public class Board {
         }
     }
 
-    public String drawBoard() {
+    public String stringRepresentationOfBoard() {
         StringBuilder builder = new StringBuilder("Game board:" + System.lineSeparator());
         for (int row = 0; row < size; row++) {
             for (int col = 0; col < size; col++)

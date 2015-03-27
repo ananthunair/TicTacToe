@@ -19,7 +19,11 @@ public class GameRunner {
     }
 
     private void displayResult() {
-        System.out.println(board.drawBoard());
+        System.out.println(board.stringRepresentationOfBoard());
+        declareResult();
+    }
+
+    private void declareResult() {
         if(board.areAllCellsFilled(game.getPlays()))
             declareGameDraw();
         else
@@ -36,7 +40,7 @@ public class GameRunner {
 
     private void gamePlay(Scanner scanner) {
         while(!game.winning() && game.getPlays()<9){
-            System.out.println(board.drawBoard());
+            System.out.println(board.stringRepresentationOfBoard());
             int input = getPick(scanner);
             board.addMarker(input, game.getCurrentPlayer());
             if(!game.winning())
@@ -48,7 +52,7 @@ public class GameRunner {
         boolean isValid = false;
         int input = 0;
         while(!isValid){
-            System.out.println("Enter Your Choice: ");
+            System.out.println("It is player "+game.getCurrentPlayer()+"'s chance. Enter Your Choice: ");
             try {
                 input = scanner.nextInt();
                 isValid = board.isValidPick(input);

@@ -27,7 +27,7 @@ public class BoardTest {
                 +" [1] [2] [3]"+System.lineSeparator()
                 +" [4] [5] [6]"+System.lineSeparator()
                 +" [7] [8] [9]"+System.lineSeparator();
-        assertEquals(expected,board.drawBoard());
+        assertEquals(expected,board.stringRepresentationOfBoard());
     }
 
     @Test
