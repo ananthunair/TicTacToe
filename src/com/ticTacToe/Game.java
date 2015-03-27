@@ -18,7 +18,6 @@ public class Game {
         char current = ' ';
         for (int row = 0; row < 3; row++) {
             for (int col = 0; col < 3; col++) {
-                if (isDigit(row, col)) break;
                 if (col == 0)
                     current = board.getBoard()[row][col];
                 else if (isCurrentUnavailable(current, row, col)) break;
@@ -27,7 +26,6 @@ public class Game {
         }
         for (int row = 0; row < 3; row++) {
             for (int col = 0; col < 3; col++) {
-                if (isDigit(col, row)) break;
                 if (col == 0)
                     current = board.getBoard()[col][row];
                 else if (isCurrentUnavailable(current, col, row)) break;
@@ -39,10 +37,6 @@ public class Game {
 
     private boolean isCurrentUnavailable(char current, int row, int col) {
         return current != board.getBoard()[row][col];
-    }
-
-    private boolean isDigit(int row, int col) {
-        return Character.isDigit(board.getBoard()[row][col]);
     }
 
     private boolean checkDiagonalsWinningCondition() {
@@ -66,8 +60,7 @@ public class Game {
     public int getPlays() {
         return plays;
     }
+
 }
-
-
 
 // winning condition should be checked after 5 chances because 5 chances are essential

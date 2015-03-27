@@ -20,7 +20,7 @@ public class GameRunner {
 
     private void displayResult() {
         System.out.println(board.drawBoard());
-        if(game.getPlays() == 9)
+        if(board.areAllCellsFilled(game.getPlays()))
             declareGameDraw();
         else
             declareWinner();

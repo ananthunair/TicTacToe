@@ -11,7 +11,7 @@ public class GameRunnerTest {
 
     @Before
     public void setUp() throws Exception {
-        board = new Board();
+        board = new Board(3);
         this.gameRunner = new GameRunner(board);
     }
 

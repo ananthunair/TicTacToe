@@ -2,8 +2,11 @@ package com.ticTacToe;
 
 public class Board {
     public char[][] board;
-    public Board() {
-        this.board = new char[3][3];
+    private int size;
+
+    public Board(int size) {
+        this.size = size;
+        this.board = new char[size][size];
         createBoard();
     }
 
@@ -13,8 +16,8 @@ public class Board {
 
     public void createBoard() {
         int number = 0;
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
                 board[i][j] = Character.forDigit(++number, 10);
             }
         }
@@ -22,17 +25,17 @@ public class Board {
 
     public String drawBoard() {
         StringBuilder builder = new StringBuilder("Game board:" + System.lineSeparator());
-        for (int row = 0; row < 3; row++) {
-            for (int col = 0; col < 3; col++)
-                builder.append(" [" + board[row][col] + "]");
-            builder.append(System.lineSeparator());
-            }
+        for (int row = 0; row < size; row++) {
+            for (int col = 0; col < size; col++)
+                builder.append(" [").append(board[row][col]).append("]");
+              builder.append(System.lineSeparator());
+        }
         return builder.toString();
     }
 
     protected boolean addMarker(int position, int currentPlayer) {
-        int row = (position -1)/3;
-        int col = (position -1)%3;
+        int row = (position - 1)/size;
+        int col = (position - 1)%size;
         if (!isSelected(position)) {
             board[row][col] = (currentPlayer == 1) ? 'x' : 'o';
             return true;
@@ -41,12 +44,16 @@ public class Board {
     }
 
     private boolean isSelected(int position) {
-        int row = (position -1)/3;
-        int col = (position -1)%3;
+        int row = (position - 1)/size;
+        int col = (position - 1)%size;
         return (board[row][col] != Character.forDigit(position,10));
     }
 
     public boolean isValidPick(int pick) {
         return (pick >= 1 && pick <= 9 && !isSelected(pick));
+    }
+
+    public boolean areAllCellsFilled(int plays) {
+        return plays == size*size;
     }
 }

@@ -9,7 +9,7 @@ public class BoardTest {
     Board board;
     @Before
     public void setUp() throws Exception {
-        this.board = new Board();
+        this.board = new Board(3);
         board.createBoard();
     }
 
