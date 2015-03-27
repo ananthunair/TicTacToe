@@ -15,10 +15,10 @@ public class BoardTest {
 
     @Test
     public void testCreateBoardInitialisesTheGameBoard() {
-        assertEquals('1', board.getBoard()[0][0]);
-        assertEquals('2', board.getBoard()[0][1]);
-        assertEquals('3', board.getBoard()[0][2]);
-        assertEquals('4', board.getBoard()[1][0]);
+        assertEquals('1', board.getCellValue(0, 0));
+        assertEquals('2', board.getCellValue(0, 1));
+        assertEquals('3', board.getCellValue(0, 2));
+        assertEquals('4', board.getCellValue(1, 0));
     }
 
     @Test
@@ -33,6 +33,6 @@ public class BoardTest {
     @Test
     public void testAddMarkerAddsTheMarkOnTheBoard(){
         assertTrue(board.addMarker(1,1));
-        assertEquals('x', board.getBoard()[0][0]);
+        assertEquals('x', board.getCellValue(0, 0));
     }
 }

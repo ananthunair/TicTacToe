@@ -19,7 +19,7 @@ public class Game {
         for (int row = 0; row < 3; row++) {
             for (int col = 0; col < 3; col++) {
                 if (col == 0)
-                    current = board.getBoard()[row][col];
+                    current = board.getCellValue(row, col);
                 else if (isCurrentUnavailable(current, row, col)) break;
                 if (col == 2) return true;
             }
@@ -27,7 +27,7 @@ public class Game {
         for (int row = 0; row < 3; row++) {
             for (int col = 0; col < 3; col++) {
                 if (col == 0)
-                    current = board.getBoard()[col][row];
+                    current = board.getCellValue(col, row);
                 else if (isCurrentUnavailable(current, col, row)) break;
                 if (col == 2) return true;
             }
@@ -36,16 +36,16 @@ public class Game {
     }
 
     private boolean isCurrentUnavailable(char current, int row, int col) {
-        return current != board.getBoard()[row][col];
+        return current != board.getCellValue(row, col);
     }
 
     private boolean checkDiagonalsWinningCondition() {
         char current;
-        current = board.getBoard()[0][0];
-        if(Character.isLetter(current) && current == board.getBoard()[1][1] && current == board.getBoard()[2][2])
+        current = board.getCellValue(0, 0);
+        if(Character.isLetter(current) && current == board.getCellValue(1, 1) && current == board.getCellValue(2, 2))
             return true;
-        current = board.getBoard()[0][2];
-        return Character.isLetter(current) && current == board.getBoard()[1][1] && current == board.getBoard()[2][0];
+        current = board.getCellValue(0, 2);
+        return Character.isLetter(current) && current == board.getCellValue(1, 1) && current == board.getCellValue(2, 0);
     }
 
     public int getCurrentPlayer() {

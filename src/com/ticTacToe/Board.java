@@ -10,8 +10,8 @@ public class Board {
         createBoard();
     }
 
-    public char[][] getBoard() {
-        return this.board;
+    public char getCellValue(int row, int col) {
+        return this.board[row][col];
     }
 
     public void createBoard() {
