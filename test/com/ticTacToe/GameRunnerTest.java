@@ -17,22 +17,22 @@ public class GameRunnerTest {
 
     @Test
     public void testIsValidPickReturnsTrueIfNumberIsGiven(){
-        assertTrue(gameRunner.isValidPick(1));
+        assertTrue(gameRunner.board.isValidPick(1));
     }
 
     @Test
     public void testIsValidPickReturnsFalseIfNumberIs10(){
-        assertFalse(gameRunner.isValidPick(10));
+        assertFalse(gameRunner.board.isValidPick(10));
     }
 
     @Test
     public void testIsValidPickReturnsFalseIfNumberIs0(){
-        assertFalse(gameRunner.isValidPick(0));
+        assertFalse(gameRunner.board.isValidPick(0));
     }
 
     @Test
     public void testIsValidPickReturnsFalseIfNumberIsAlreadySelected(){
         board.addMarker(1,1);
-        assertFalse(gameRunner.isValidPick(1));
+        assertFalse(gameRunner.board.isValidPick(1));
     }
 }

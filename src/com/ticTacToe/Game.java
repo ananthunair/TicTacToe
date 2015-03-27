@@ -67,3 +67,7 @@ public class Game {
         return plays;
     }
 }
+
+
+
+// winning condition should be checked after 5 chances because 5 chances are essential

@@ -31,23 +31,22 @@ public class Board {
     }
 
     protected boolean addMarker(int position, int currentPlayer) {
-        for (int row = 0; row < 3; row++) {
-            for (int col = 0; col < 3; col++) {
-                if (board[row][col] == Character.forDigit(position,10)) {
-                    board[row][col] = (currentPlayer == 1) ? 'x' : 'o';
-                    return true;
-                }
-            }
+        int row = (position -1)/3;
+        int col = (position -1)%3;
+        if (!isSelected(position)) {
+            board[row][col] = (currentPlayer == 1) ? 'x' : 'o';
+            return true;
         }
         return false;
     }
 
-    public boolean isSelected(int position) {
-        for (int row = 0; row < 3; row++) {
-            for (int col = 0; col < 3; col++)
-                if (board[row][col] == Character.forDigit(position,10))
-                    return false;
-        }
-        return true;
+    private boolean isSelected(int position) {
+        int row = (position -1)/3;
+        int col = (position -1)%3;
+        return (board[row][col] != Character.forDigit(position,10));
+    }
+
+    public boolean isValidPick(int pick) {
+        return (pick >= 1 && pick <= 9 && !isSelected(pick));
     }
 }

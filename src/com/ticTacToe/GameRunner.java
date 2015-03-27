@@ -3,7 +3,7 @@ package com.ticTacToe;
 import java.util.Scanner;
 
 public class GameRunner {
-    private Board board;
+    Board board;
     private Game game;
 
     public GameRunner(Board board) {
@@ -51,7 +51,7 @@ public class GameRunner {
             System.out.println("Enter Your Choice: ");
             try {
                 input = scanner.nextInt();
-                isValid = isValidPick(input);
+                isValid = board.isValidPick(input);
             }catch (Exception e){
                 scanner.next();
             }
@@ -65,7 +65,4 @@ public class GameRunner {
             System.out.println("Invalid Pick!");
     }
 
-    public boolean isValidPick(int pick) {
-        return (pick >= 1 && pick <= 9 && !board.isSelected(pick));
-    }
 }
